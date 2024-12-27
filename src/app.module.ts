@@ -7,6 +7,6 @@ import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
   imports: [UserModule, PostModule, CategoryModule, ReviewModule, PrismaModule],
-  providers: [],
+  providers: [], // не используется -- удаляется
 })
 export class AppModule {}

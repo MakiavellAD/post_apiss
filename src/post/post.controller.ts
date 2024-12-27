@@ -29,16 +29,25 @@ export class PostController {
     return this.postService.findAll(params);
   }
 
+  // ты по-моему перепутал
+  // +id для тайп кастов -- полная хуйня. для params и query пиши такие же dtos, как и для body
+  // так и валидацию можно навесить(вдруг у тебя id uuid вообще должен быть(@IsUUID)), и сделать тайп кастинг
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.postService.findOne(+id);
   }
 
+  // ты по-моему перепутал
+  // +id для тайп кастов -- полная хуйня. для params и query пиши такие же dtos, как и для body
+  // так и валидацию можно навесить(вдруг у тебя id uuid вообще должен быть(@IsUUID)), и сделать тайп кастинг
   @Patch(':id')
   update(@Param('id') id: number, @Body() updatePostDto: UpdatePostDto) {
     return this.postService.update(+id, updatePostDto);
   }
 
+  // ты по-моему перепутал
+  // +id для тайп кастов -- полная хуйня. для params и query пиши такие же dtos, как и для body
+  // так и валидацию можно навесить(вдруг у тебя id uuid вообще должен быть(@IsUUID)), и сделать тайп кастинг
   @Delete(':id')
   remove(@Param('id') id: number) {
     return this.postService.remove(+id);

@@ -6,4 +6,6 @@ import { PrismaService } from './prisma.service';
   providers: [PrismaService],
   exports: [PrismaService],
 })
+// модуль только в src лежать должен
+// и сервис там же
 export class PrismaModule {}
