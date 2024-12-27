@@ -7,6 +7,7 @@ import { PrismaService } from '../prisma/prisma.service';
 
 @Module({
   imports: [UserModule, PostModule, CategoryModule, ReviewModule],
+  // про prisma service писал уже
   providers: [PrismaService],
 })
 export class AppModule {}

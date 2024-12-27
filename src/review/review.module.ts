@@ -5,6 +5,7 @@ import { ReviewService } from './review.service';
 
 @Module({
   controllers: [ReviewController],
+  // про prisma service писал уже
   providers: [ReviewService, PrismaService],
 })
 export class ReviewModule {}

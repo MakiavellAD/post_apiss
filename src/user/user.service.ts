@@ -13,6 +13,7 @@ export class UserService {
   }
 
   async findAll() {
+    // мб пагинация
     return this.prisma.user.findMany();
   }
 

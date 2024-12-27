@@ -27,16 +27,19 @@ export class ReviewController {
     return this.reviewService.findAll();
   }
 
+  // про +id писал в category.controller.ts
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.reviewService.findOne(+id);
   }
 
+  // про +id писал в category.controller.ts
   @Patch(':id')
   update(@Param('id') id: number, @Body() updateReviewDto: UpdateReviewDto) {
     return this.reviewService.update(+id, updateReviewDto);
   }
 
+  // про +id писал в category.controller.ts
   @Delete(':id')
   remove(@Param('id') id: number) {
     return this.reviewService.remove(+id);

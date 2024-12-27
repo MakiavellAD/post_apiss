@@ -13,6 +13,7 @@ export class ReviewService {
   }
 
   async findAll() {
+    // тож мб нужна пагинация
     return this.prisma.review.findMany({
       include: { user: true, post: true },
     });
