@@ -27,14 +27,11 @@ export class CategoryController {
     return this.categoryService.findAll();
   }
 
-  // +id для тайп кастов -- полная хуйня. для params и query пиши такие же dtos, как и для body
-  // так и валидацию можно навесить(вдруг у тебя id uuid вообще должен быть(@IsUUID)), и сделать тайп кастинг
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.categoryService.findOne(+id);
   }
 
-  // та же хуйня
   @Patch(':id')
   update(
     @Param('id') id: number,
@@ -43,7 +40,6 @@ export class CategoryController {
     return this.categoryService.update(+id, updateCategoryDto);
   }
 
-  // та же хуйня
   @Delete(':id')
   remove(@Param('id') id: number) {
     return this.categoryService.remove(+id);

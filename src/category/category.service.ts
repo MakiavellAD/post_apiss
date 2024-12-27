@@ -14,7 +14,6 @@ export class CategoryService {
   }
 
   async findAll() {
-    // пагинация мб нужна? тут уже сам решай
     return this.prisma.category.findMany();
   }
 
