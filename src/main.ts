@@ -14,7 +14,7 @@ async function bootstrap() {
    * на все настройки можно создать отдельный файлик, в который ты app передаешь и он там настраивается. он мутабельный так что не требует переопределения
    */
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
-
+  //
   app.setGlobalPrefix('api');
 
   const config = new DocumentBuilder()
