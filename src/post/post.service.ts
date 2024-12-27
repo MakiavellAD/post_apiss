@@ -3,10 +3,16 @@ import { PrismaService } from '../../prisma/prisma.service';
 import { CreatePostDto } from './dtos/create-post.dto';
 import { UpdatePostDto } from './dtos/update-post.dto';
 import { QueryDto } from './dtos/query.dto';
+import { CategoryService } from '../category/category.service';
+import { isEmpty } from 'class-validator';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class PostService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly categoryService: CategoryService,
+  ) {}
 
   async create(createPostDto: CreatePostDto) {
     return this.prisma.post.create({
@@ -15,9 +21,28 @@ export class PostService {
   }
 
   async findAll(params: QueryDto) {
-    const { limit, offset } = params;
+    const { limit, offset, categoryIds, showForLastWeek } = params;
+
+    const where: Prisma.PostWhereInput = {};
+
+    if (!isEmpty(categoryIds)) {
+      const existingCategories =
+        await this.categoryService.findByIds(categoryIds);
+      if (isEmpty(existingCategories)) {
+        return [];
+      }
+      where.categoryId = { in: categoryIds };
+    }
+
+    if (showForLastWeek) {
+      where.createdAt = {
+        gte: new Date(new Date().setDate(new Date().getDate() - 7)),
+      };
+    }
+
     return this.prisma.post.findMany({
       include: { category: true, user: true },
+      where,
       skip: offset,
       take: limit,
     });

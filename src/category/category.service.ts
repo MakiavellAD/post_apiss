@@ -28,6 +28,17 @@ export class CategoryService {
     return category;
   }
 
+  async findByIds(ids: number[]) {
+    const categories = await this.prisma.category.findMany({
+      where: {
+        id: {
+          in: ids,
+        },
+      },
+    });
+    return categories;
+  }
+
   async update(id: number, updateCategoryDto: UpdateCategoryDto) {
     return this.prisma.category.update({
       where: { id },
