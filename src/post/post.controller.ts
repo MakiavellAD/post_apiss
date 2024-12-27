@@ -29,16 +29,19 @@ export class PostController {
     return this.postService.findAll(params);
   }
 
+  // про +id писал в category.controller.ts
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.postService.findOne(+id);
   }
 
+  // про +id писал в category.controller.ts
   @Patch(':id')
   update(@Param('id') id: number, @Body() updatePostDto: UpdatePostDto) {
     return this.postService.update(+id, updatePostDto);
   }
 
+  // про +id писал в category.controller.ts
   @Delete(':id')
   remove(@Param('id') id: number) {
     return this.postService.remove(+id);
